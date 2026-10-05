@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Hospital Appointment System</h1>
+
+        <h2>Welcome, {{ name }}</h2>
+
+        <div class="menu">
+
+            <a href="{{ url_for('doctors') }}">
+                <button>View Doctors</button>
+            </a>
+
+            <a href="{{ url_for('appointments') }}">
+                <button>My Appointments</button>
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                <button>Logout</button>
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

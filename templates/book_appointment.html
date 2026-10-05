@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Book Appointment</h1>
+
+        <h2>{{ doctor["name"] }}</h2>
+
+        <p>
+            Specialization:
+            {{ doctor["specialization"] }}
+        </p>
+
+        <form method="POST">
+
+            <label>Select Available Slot</label>
+
+            <select name="slot_id" required>
+
+                <option value="">Select Slot</option>
+
+                {% for slot in slots %}
+
+                    <option value="{{ slot['id'] }}">
+                        {{ slot["date"] }} - {{ slot["time"] }}
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+            <br><br>
+
+            <button type="submit">
+                Confirm Appointment
+            </button>
+
+        </form>
+
+        <br>
+
+        <a href="{{ url_for('doctors') }}">
+            Back to Doctors
+        </a>
+
+    </div>
+
+</body>
+</html>
+
+

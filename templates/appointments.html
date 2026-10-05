@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Appointments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>My Appointments</h1>
+
+        {% if appointments %}
+
+            <table border="1">
+
+                <tr>
+                    <th>Doctor</th>
+                    <th>Specialization</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+
+                {% for appointment in appointments %}
+
+                <tr>
+
+                    <td>{{ appointment["doctor_name"] }}</td>
+
+                    <td>{{ appointment["specialization"] }}</td>
+
+                    <td>{{ appointment["date"] }}</td>
+
+                    <td>{{ appointment["time"] }}</td>
+
+                    <td>{{ appointment["status"] }}</td>
+
+                    <td>
+
+                        {% if appointment["status"] != "Cancelled" %}
+
+                            <a href="{{ url_for('cancel_appointment', appointment_id=appointment['id']) }}">
+                                <button>Cancel</button>
+                            </a>
+
+                        {% else %}
+
+                            Cancelled
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        {% else %}
+
+            <p>No appointments found.</p>
+
+        {% endif %}
+
+        <br>
+
+        <a href="{{ url_for('dashboard') }}">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+</body>
+</html>
+
